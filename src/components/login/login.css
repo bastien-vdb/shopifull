@@ -1,0 +1,47 @@
+/* Login.module.css */
+
+.loginBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-image: url("/images/background.jpg"); /* Replace with your background image */
+    background-size: cover;
+    backdrop-filter: blur(3px); /* Apply blur effect to the background */
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .loginContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .loginTitle {
+    /* Add your login title styles here */
+  }
+  
+  .loginInput {
+    /* Add your login input styles here */
+  }
+  
+  .loginButton {
+    /* Add your login button styles here */
+  }
+  
+  .loginFooter {
+    /* Add your login footer styles here */
+  }
+  
+  .loginFooterLink {
+    /* Add your login footer link styles here */
+  }
+  

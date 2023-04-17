@@ -1,6 +1,6 @@
 import "./Home.css";
 import Image from "next/image";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/productCard/ProductCard";
 
 import bannerImage from "../images/banner.jpg";
 import product1Image from "../images/product1.jpg";
