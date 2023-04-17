@@ -12,6 +12,7 @@ import SignInButton from "@/components/buttons/signIn";
 import SignOutButton from "@/components/buttons/signOut";
 
 function Home() {
+  
   return (
     <div>
       <div className="banner">
