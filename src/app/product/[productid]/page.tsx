@@ -1,11 +1,14 @@
 // ProductDetails.js
-
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import product1Image from '../../../images/product1.jpg'; // Import the product image
 import './product.css'; // Import the CSS file for styling
 
+import { useSession, signIn, signOut } from "next-auth/react";
+
 function ProductDetails() {
+
   return (
     <div className="product-details-container">
       <div className="product-details-image">

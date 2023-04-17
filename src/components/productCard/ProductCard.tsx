@@ -1,8 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import "./ProductCard.css"; // Import CSS file for styling
+import { useSession } from "next-auth/react";
 
-const ProductCard = ({ title, price, image, link }) => {
+type ProductCardProps = {
+  title: string,
+  price: number,
+  image: string,
+  link: string
+}
+
+const ProductCard = ({ title, price, image, link }: ProductCardProps) => {
+
   return (
     <div className="product-card">
       <Image src={image} alt={title} className="product-image" />

@@ -7,10 +7,18 @@ import product1Image from "../images/product1.jpg";
 import product2Image from "../images/product2.jpg";
 import product3Image from "../images/product3.jpg";
 
+import { useSession, signIn, signOut } from "next-auth/react";
+import SignInButton from "@/components/buttons/signIn";
+import SignOutButton from "@/components/buttons/signOut";
+
 function Home() {
   return (
     <div>
       <div className="banner">
+        <div className="absolute space-x-4 px-2 right-0">
+          <SignInButton />
+          <SignOutButton />
+        </div>
         <Image src={bannerImage} alt="Banner" className="banner-image" />
         <div className="banner-text">
           <h1 className="banner-title">Welcome to our Online Store</h1>
