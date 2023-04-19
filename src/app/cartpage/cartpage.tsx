@@ -33,7 +33,7 @@ function Cart() {
               <p>${product.price}</p>
               <div className="cart-item-quantity">
                 <button>-</button>
-                <span>Qty: 1</span>
+                <span>Qty:<span className="text-green-400"> {product.qty}</span></span>
                 <button>+</button>
               </div>
               <button onClick={()=>removeToCart(product.id)} className="remove-btn">Remove</button>

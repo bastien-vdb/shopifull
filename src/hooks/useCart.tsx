@@ -2,9 +2,11 @@
 import React, { useState, createContext, PropsWithChildren, useContext, useEffect } from 'react';
 import type { productType } from "@/lib/types/productType";
 
+type productTypeForCart = productType & { qty: number };
+
 type cartContextProps = {
-    cart: productType[];
-    addToCart: ({ title, price, image, id }: productType) => void;
+    cart: productTypeForCart[];
+    addToCart: ({ title, price, image, id }: productTypeForCart) => void;
     removeToCart: (id: string) => void;
     cartCount: number;
 }
@@ -17,23 +19,33 @@ const CartContext = createContext<cartContextProps>({
 });
 
 export function CartProvider({ children }: PropsWithChildren) {
-    const [cart, setCart] = useState<productType[]>([]);
+    const [cart, setCart] = useState<productTypeForCart[]>([]);
     const [cartCount, setCartCount] = useState<number>(0);
 
-    const addToCart = ({ title, price, image, id }: productType) => {
-        const newProduct = { title, price, image, id }
-        setCart(prev => [...prev, newProduct]);
+    const addToCart = ({ title, price, image, id }: productTypeForCart) => {
+        const cartCopy = cart.slice();
+        const materialAlreadyAdded = cartCopy.filter(prev => prev.id === id);
+
+        if (materialAlreadyAdded.length > 0) {
+            const newCart = cartCopy.filter(prev => prev.id !== id);
+            const newProduct = { ...materialAlreadyAdded[0], qty: materialAlreadyAdded[0].qty + 1 };
+            setCart([...newCart, newProduct]);
+            return;
+        }
+        const newProduct = { title, price, image, id, qty: 1 }
+        setCart((newCart) => [...newCart, newProduct]);
     }
 
     const removeToCart = (id: string) => {
         const cartCopy = cart.slice(); //copy
-        const newCart = cartCopy.filter((cart:productType)=> cart.id !== id);
+        const newCart = cartCopy.filter((prev: productTypeForCart) => prev.id !== id);
         setCart(newCart);
     }
 
     useEffect(() => {
-        const getCartCount = () => cart.length;
-        setCartCount(getCartCount());
+        const getAllQty = cart.map((prev: productTypeForCart) => prev.qty);
+        const newCount = getAllQty.reduce((acc, curr)=>acc+curr, 0)
+        setCartCount(newCount);
     }, [cart]);
 
     return (<CartContext.Provider value={{ cart, addToCart, cartCount, removeToCart }}>
