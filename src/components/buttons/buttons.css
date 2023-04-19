@@ -1,0 +1,37 @@
+.buttonsConnect {
+    background-color: #4CAF50; /* Vert */
+    border: none;
+    color: white;
+    padding: 7px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  
+  .buttonsConnect:hover {
+    background-color: #45a049; /* Légèrement plus foncé au survol */
+  }
+  
+  .buttonsConnect:active {
+    background-color: #367c39; /* Encore plus foncé en cliquant */
+  }
+
+  .buttonsDisconnect {
+    background-color: #d14949; /* Vert */
+    border: none;
+    color: white;
+    padding: 7px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  
+  .buttonsDisconnect:hover {
+    background-color: #ce2424; /* Légèrement plus foncé au survol */
+  }
+  
+  .buttonsDisconnect:active {
+    background-color: #aa0000; /* Encore plus foncé en cliquant */
+  }

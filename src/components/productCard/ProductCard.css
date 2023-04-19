@@ -34,7 +34,7 @@
   .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #ff6b6b;
+    background-color: #6ba6ff;
     color: #fff;
     text-decoration: none;
     font-size: 16px;
@@ -43,6 +43,10 @@
   }
   
   .btn:hover {
-    background-color: #e34b4b;
+    background-color: #2659a5;
+  }
+
+  .addBtn {
+    
   }
   

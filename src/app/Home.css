@@ -53,12 +53,13 @@
 
 .product-list {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
 }
 
 /* Example styles for the ProductCard component */
 .product-card {
-  flex: 1;
   border: 1px solid #eaeaea;
   border-radius: 8px;
   padding: 20px;

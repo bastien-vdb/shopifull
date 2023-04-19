@@ -10,9 +10,6 @@ const Login = ({ children }: PropsWithChildren) => {
 
     const { data: session, status } = useSession();
 
-    console.log(status);
-    console.log(session);
-
     if (!session && status !== 'loading') {
 
         return (

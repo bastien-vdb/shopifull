@@ -1,11 +1,14 @@
 'use client';
 import { SessionProvider } from "next-auth/react"
+import { CartProvider } from '@/hooks/useCart';
 
 function Provider({ children }: any) {
     return (
         <SessionProvider>
-            {children}
-        </SessionProvider>
+            <CartProvider>
+                {children}
+            </CartProvider>
+        </SessionProvider >
     );
 }
 
