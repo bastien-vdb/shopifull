@@ -7,18 +7,22 @@ import './product.css'; // Import the CSS file for styling
 import type { productType } from '@/lib/types/productType';
 import { useSession } from "next-auth/react";
 import { useRouter } from 'next/navigation';
+import { useCart } from '@/hooks/useCart';
 
 function ProductClient({ id, session }: { id: any, session: any }) {
   const [product, setProduct] = useState<productType | null>(null);
 
   const router = useRouter();
 
-  const fetching = async () => {
-    fetch(`http://localhost:3000/api/getOne/${id}`).then(res => res.json()).then(res => setProduct(res));
-  }
+  const {addOneToCart} = useCart();
+
+  
   useEffect(() => {
+    const fetching = async () => {
+      fetch(`http://localhost:3000/api/getOne/${id}`).then(res => res.json()).then(res => setProduct(res));
+    }
     fetching();
-  }, [])
+  }, [id])
 
   if (!session) router.push('http://localhost:3000/api/auth/signin?error=SessionRequired&callbackUrl');
 
@@ -26,7 +30,7 @@ function ProductClient({ id, session }: { id: any, session: any }) {
     <div className="product-details-container relative">
       <button onClick={() => router.back()} className='text-6xl font-bold'>←</button>
       <div className="product-details-image">
-        <Image src={product?.image} width={1000} height={1000} alt="Product 1" />
+        <Image src={product?.image} width={1000} height={1000} alt={product?.title} />
       </div>
       <div className="product-details-info">
         <h1 className="product-details-title">{product?.title}</h1>
@@ -36,7 +40,7 @@ function ProductClient({ id, session }: { id: any, session: any }) {
         </p>
         <div className="product-details-price-container">
           <h2 className="product-details-price">${product?.price}</h2>
-          <button className="product-details-add-to-cart">Add to Cart</button>
+          <button onClick={()=>addOneToCart(product?.id)} className="product-details-add-to-cart">Add to Cart</button>
         </div>
         <div className="product-details-options-container">
           <label className="product-details-option-label">Color:</label>

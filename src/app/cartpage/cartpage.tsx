@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 function Cart() {
   const router = useRouter();
-  const { cart, cartCount, removeToCart } = useCart();
+  const { cart, cartCount, removeToCart, addOneToCart, removeOneToCart } = useCart();
 
   return (
     <div className="cart-container">
@@ -32,11 +32,11 @@ function Cart() {
               <h3>{product.title}</h3>
               <p>${product.price}</p>
               <div className="cart-item-quantity">
-                <button>-</button>
+                <button onClick={() => removeOneToCart(product.id)}>-</button>
                 <span>Qty:<span className="text-green-400"> {product.qty}</span></span>
-                <button>+</button>
+                <button onClick={() => addOneToCart(product.id)}>+</button>
               </div>
-              <button onClick={()=>removeToCart(product.id)} className="remove-btn">Remove</button>
+              <button onClick={() => removeToCart(product.id)} className="remove-btn">Remove</button>
             </div>
           </div>
         ))}
