@@ -17,6 +17,7 @@ export default function RootLayout({
     <Provider>
       <html lang="en">
         <body>
+          {/* @ts-expect-error Async Server Component */}
             <Header />
             {children}
         </body>

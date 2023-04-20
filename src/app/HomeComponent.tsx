@@ -3,17 +3,9 @@ import Image from "next/image";
 import ProductCard from "../components/productCard/ProductCard";
 
 import bannerImage from "../images/banner.jpg";
-import { useEffect, useState } from "react";
 import type { productType } from "@/lib/types/productType";
 
-const HomePage = () => {
-
-    const [products, setProducts] = useState<any>((null));
-    useEffect(() => {
-        fetch('http://localhost:3000/api/get')
-            .then(res => res.json())
-            .then(res => setProducts(res));
-    }, []);
+const HomePage = ({products}:productType[]) => {
 
     return (
         <div>

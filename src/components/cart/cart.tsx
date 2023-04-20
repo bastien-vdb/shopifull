@@ -4,7 +4,7 @@ import './cart.css';
 import { useRouter } from 'next/navigation';
 
 const Cart = () => {
-    const { cart, cartCount } = useCart();
+    const { cartCount } = useCart();
     const router = useRouter();
 
     return (

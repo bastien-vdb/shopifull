@@ -1,16 +1,16 @@
-'use client';
 import React from 'react';
-import { useSession } from 'next-auth/react';
 import SignInButton from '../buttons/signIn';
 import SignOutButton from '../buttons/signOut';
 import Cart from '@/components/cart/cart';
+import { getSession } from '@/lib/auth/getNextServerSession';
 
-function Header() {
+async function Header() {
 
-    const { data: session } = useSession();
+    const session = await getSession();
+    
     return (
         <div className="absolute right-0 z-10">
-            <Cart/>
+            <Cart />
             {session ? <SignOutButton /> : <SignInButton />}
         </div>
     );
